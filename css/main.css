@@ -1,0 +1,36 @@
+.cuadrado {
+    height: 200px;
+    opacity: 0.5;
+    transition: opacity 500ms;
+    border-radius: 25px;
+    border: 2px solid #2D2926;
+    padding: 20px;
+    width: 200px;
+    height: 150px;
+    margin: 5px;
+}
+
+#info {
+    width: auto;
+    height: auto;
+    border-radius: 25px;
+    padding: 10px;
+    margin: 5px;
+    text-align: center;
+}
+
+#cuadrado-1 {
+    background-color: yellow;
+}
+
+#cuadrado-2 {
+    background-color: blue;
+}
+
+#cuadrado-3 {
+    background-color: red;
+}
+
+#cuadrado-4 {
+    background-color: green;
+}
