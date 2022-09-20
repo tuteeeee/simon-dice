@@ -24,6 +24,10 @@ function manejarJuego() {
     const cuadradoRandom = obtenerCuadradoRandom();
     secuenciaMaquina.push(cuadradoRandom);
     iluminarCuadrado(cuadradoRandom);
+
+    const cuadradoUsuario = obtenerInputUsuario(event);
+    secuenciaUsuario.push(cuadradoUsuario);
+    iluminarCuadrado(cuadradoUsuario);
 }
 
 function obtenerCuadradoRandom() {
@@ -31,6 +35,12 @@ function obtenerCuadradoRandom() {
     const numeroRandom = Math.floor(Math.random() * $cuadrados);
     
     return document.querySelectorAll('.cuadrado')[numeroRandom];
+}
+
+function obtenerInputUsuario(event) {
+    const cuadradoUsuario = event.target;
+
+    return cuadradoUsuario;
 }
 
 function iluminarCuadrado(cuadradoRandom) {
