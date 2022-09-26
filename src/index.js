@@ -11,6 +11,9 @@ function empezarJuego() {
 
 function manejarJuego() {
     manejarInputComputadora();
+
+    habilitarInputUsuario();
+    manejarInputUsuario();
 }
 
 function reiniciarSecuencias() {
@@ -43,4 +46,17 @@ function iluminarCuadrado(cuadrado) {
     setTimeout(function() {
         cuadrado.style.opacity = 0.5;
     }, 400);
+}
+
+function manejarInputUsuario(e) {
+    const $cuadrado = e.target;
+    secuenciaUsuario.push($cuadrado);
+
+    iluminarCuadrado($cuadrado);
+}
+
+function habilitarInputUsuario() {
+    const $cuadrados = document.querySelectorAll('.cuadrado');
+
+    $cuadrados.forEach($cuadrado => $cuadrado.addEventListener('click', manejarInputUsuario));
 }
