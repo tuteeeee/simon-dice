@@ -25,6 +25,7 @@ function actualizarEstado(nuevoEstado) {
 
 function manejarInputComputadora() {
     const $cuadradoRandom = obtenerCuadradoRandom();
+    secuenciaComputadora.push($cuadradoRandom);
 
     iluminarCuadrado($cuadradoRandom);
 }
