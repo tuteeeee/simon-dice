@@ -53,10 +53,17 @@ function manejarInputUsuario(e) {
     secuenciaUsuario.push($cuadrado);
 
     iluminarCuadrado($cuadrado);
+    deshabilitarInputUsuario();
 }
 
 function habilitarInputUsuario() {
     const $cuadrados = document.querySelectorAll('.cuadrado');
 
     $cuadrados.forEach($cuadrado => $cuadrado.addEventListener('click', manejarInputUsuario));
+}
+
+function deshabilitarInputUsuario() {
+    const $cuadrados = document.querySelectorAll('.cuadrado');
+
+    $cuadrados.forEach($cuadrado => $cuadrado.removeEventListener('click', manejarInputUsuario));
 }
