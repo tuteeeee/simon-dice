@@ -10,6 +10,8 @@ function empezarJuego() {
 }
 
 function manejarJuego() {
+    actualizarRonda();
+    
     manejarInputComputadora();
 
     habilitarInputUsuario();
@@ -66,4 +68,8 @@ function deshabilitarInputUsuario() {
     const $cuadrados = document.querySelectorAll('.cuadrado');
 
     $cuadrados.forEach($cuadrado => $cuadrado.removeEventListener('click', manejarInputUsuario));
+}
+
+function actualizarRonda() {
+    document.querySelector('#ronda').textContent = ronda += 1;
 }
