@@ -15,7 +15,6 @@ function manejarJuego() {
     manejarInputComputadora();
 
     habilitarInputUsuario();
-    manejarInputUsuario();
 }
 
 function reiniciarSecuencias() {
