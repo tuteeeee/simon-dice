@@ -11,10 +11,24 @@ function empezarJuego() {
 
 function manejarJuego() {
     actualizarRonda();
-    
     manejarInputComputadora();
+    deshabilitarInputUsuario();
 
-    habilitarInputUsuario();
+    const RETRASO_TURNO_JUGADOR = (secuenciaComputadora.length + 1) * 1000;
+
+    secuenciaComputadora.forEach(function($cuadrado, index) {
+        const RETRASO_MS = (index + 1) * 1000;
+        setTimeout(function() {
+            iluminarCuadrado($cuadrado);
+        }, RETRASO_MS);
+    });
+
+    setTimeout(function() {
+        actualizarEstado('Turno de Jugador');
+        habilitarInputUsuario();
+    }, RETRASO_TURNO_JUGADOR);
+
+    secuenciaUsuario = [];
 }
 
 function reiniciarSecuencias() {
@@ -28,10 +42,9 @@ function actualizarEstado(nuevoEstado) {
 }
 
 function manejarInputComputadora() {
+    actualizarEstado('Turno de Computadora');
     const $cuadradoRandom = obtenerCuadradoRandom();
     secuenciaComputadora.push($cuadradoRandom);
-
-    iluminarCuadrado($cuadradoRandom);
 }
 
 function obtenerCuadradoRandom() {
@@ -54,7 +67,18 @@ function manejarInputUsuario(e) {
     secuenciaUsuario.push($cuadrado);
 
     iluminarCuadrado($cuadrado);
-    deshabilitarInputUsuario();
+
+    const cuadradoComputadora = secuenciaComputadora[secuenciaUsuario.length - 1];
+
+    if ($cuadrado.id !== cuadradoComputadora.id) {
+        perderJuego();
+        return;
+    }
+
+    if (secuenciaUsuario.length === secuenciaComputadora.length) {
+        deshabilitarInputUsuario();
+        setTimeout(manejarJuego, 1000);
+    }
 }
 
 function habilitarInputUsuario() {
@@ -71,4 +95,9 @@ function deshabilitarInputUsuario() {
 
 function actualizarRonda() {
     document.querySelector('#ronda').textContent = ronda += 1;
+}
+
+function perderJuego() {
+    deshabilitarInputUsuario();
+    actualizarEstado('¡Perdiste, Tocá "Empezar"!');
 }
